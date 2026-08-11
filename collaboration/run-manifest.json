@@ -144,5 +144,28 @@
     "no_webgl_fallback": "pass",
     "reduced_motion": "pass",
     "keyboard_focus": "pass"
+  },
+  "redesign_v2": {
+    "trigger": "user_rejected_v1_visual_quality",
+    "author": "Codex",
+    "aesthetic_delegation": false,
+    "local_model_calls": 0,
+    "cloud_subagent_calls": 0,
+    "replaced_visuals": [
+      "opaque_black_sphere",
+      "orbit_rings",
+      "diamond_confetti_particles",
+      "blocky_lightning",
+      "focal_frosted_cards"
+    ],
+    "new_visual_system": [
+      "full_screen_atmospheric_shader",
+      "glass_rain_refraction",
+      "flow_field_magnetic_fog",
+      "upward_branching_lightning",
+      "low_saturation_aurora_curtains",
+      "edge_scrim_editorial_interface"
+    ],
+    "lesson": "functional_and_vl_scores_do_not_substitute_for_human_aesthetic_acceptance"
   }
 }

@@ -6,8 +6,8 @@
 
 ## 體驗內容
 
-- 四個即時 3D 標本：玻璃雨、磁霧、逆閃電、潮汐極光
-- 自訂 GLSL 粒子材質、半透明氣象冷凝器、軌道與程序式閃電／極光
+- 四個即時大氣標本：玻璃雨、磁霧、逆閃電、潮汐極光
+- 全螢幕 Three.js／GLSL 氣象場：折射雨痕、流場霧、向上分岔閃電與低飽和極光簾幕
 - 英文／繁體中文切換
 - 預設關閉、由使用者手勢啟動的生成式 Web Audio 聲場
 - 密度、湍流與光譜三個即時參數
@@ -55,7 +55,7 @@ npm run preview
 
 ## 本地模型 Pair Programming
 
-所有被委派的設計、coding 與視覺審查角色都只透過本地 Ollama 執行；沒有雲端子 agent。Codex 擔任規格、整合、驗收與失敗救場。
+初版被委派的設計、coding 與視覺審查角色都只透過本地 Ollama 執行；沒有雲端子 agent。初版通過功能測試後仍被人工美感驗收否決；現行 v2 的 shader、構圖、介面層級與視覺取捨由 Codex 單獨重製，沒有再委派模型。完整差異與踩雷都保留在下列紀錄。
 
 - 協作方法與角色：[COLLABORATION.md](COLLABORATION.md)
 - 每一次模型表現、踩雷與修正建議：[LOCAL_MODEL_EVALUATION.md](LOCAL_MODEL_EVALUATION.md)

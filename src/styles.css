@@ -1170,3 +1170,291 @@ a:focus-visible,
     background: rgba(7, 31, 38, 0.94);
   }
 }
+
+/* Atmospheric art direction v2 — weather first, interface second */
+:root {
+  --abyss: #02090c;
+  --vellum: #dce5df;
+  --ink-muted: rgba(220, 229, 223, 0.66);
+  --ink-faint: rgba(220, 229, 223, 0.17);
+  --glass: rgba(2, 9, 12, 0.5);
+  --accent: #b7c9c5;
+}
+
+body[data-mode="0"] { --accent: #b7c9c5; }
+body[data-mode="1"] { --accent: #82a69c; }
+body[data-mode="2"] { --accent: #c58c60; }
+body[data-mode="3"] { --accent: #9eb8ae; }
+
+body {
+  background: var(--abyss);
+}
+
+.museum-frame {
+  display: none;
+}
+
+.surface-grain {
+  z-index: 3;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+}
+
+.museum-header {
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 86px;
+  padding: 20px clamp(22px, 3vw, 48px) 16px;
+  border-bottom-color: rgba(220, 229, 223, 0.1);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 9, 12, 0.88) 0%,
+    rgba(2, 9, 12, 0.42) 62%,
+    rgba(2, 9, 12, 0) 100%
+  );
+  backdrop-filter: none;
+}
+
+.wordmark {
+  font-size: clamp(0.88rem, 1.05vw, 1.08rem);
+}
+
+.wordmark__zh,
+.museum-header__meta {
+  color: rgba(220, 229, 223, 0.48);
+}
+
+.instrument-button {
+  min-height: 44px;
+  border-color: rgba(220, 229, 223, 0.2);
+  background: rgba(2, 9, 12, 0.24);
+  backdrop-filter: blur(12px);
+}
+
+.exhibit-progress {
+  right: clamp(18px, 2.6vw, 42px);
+}
+
+.progress-rail {
+  background: rgba(220, 229, 223, 0.14);
+}
+
+.specimen {
+  min-height: 100svh;
+  padding:
+    clamp(120px, 16vh, 174px)
+    clamp(34px, 6.5vw, 112px)
+    clamp(58px, 8vh, 92px);
+  align-items: end;
+  overflow: hidden;
+}
+
+.specimen::before {
+  display: none;
+}
+
+.specimen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 9, 12, 0.9) 0%,
+    rgba(2, 9, 12, 0.66) 22%,
+    rgba(2, 9, 12, 0.22) 44%,
+    rgba(2, 9, 12, 0) 68%
+  );
+  pointer-events: none;
+}
+
+.specimen--reverse::after {
+  background: linear-gradient(
+    270deg,
+    rgba(2, 9, 12, 0.86) 0%,
+    rgba(2, 9, 12, 0.58) 23%,
+    rgba(2, 9, 12, 0.16) 45%,
+    rgba(2, 9, 12, 0) 68%
+  );
+}
+
+.specimen__copy,
+.specimen--reverse .specimen__copy {
+  position: relative;
+  z-index: 1;
+  max-width: 34rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  backdrop-filter: none;
+  opacity: 0.32;
+  translate: 0 20px;
+  text-shadow: 0 2px 24px rgba(2, 9, 12, 0.76);
+}
+
+.specimen__copy {
+  grid-column: 1 / span 5;
+}
+
+.specimen--reverse .specimen__copy {
+  grid-column: 8 / span 5;
+}
+
+.specimen.is-active .specimen__copy {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.specimen__catalogue {
+  margin-bottom: clamp(24px, 3.4vh, 36px);
+  color: rgba(220, 229, 223, 0.48);
+  font-size: 0.53rem;
+}
+
+.specimen__kicker {
+  max-width: 34em;
+  margin-bottom: 14px;
+  color: var(--accent);
+  font-size: clamp(0.62rem, 0.72vw, 0.72rem);
+}
+
+.specimen__title,
+.specimen--opening .specimen__title {
+  font-size: clamp(4.4rem, 7.6vw, 8.7rem);
+  line-height: 0.76;
+  letter-spacing: -0.07em;
+}
+
+html[lang="zh-TW"] .specimen__title {
+  font-size: clamp(4rem, 7vw, 7.8rem);
+}
+
+.specimen__description {
+  max-width: 36em;
+  margin-top: clamp(24px, 3.6vh, 38px);
+  color: rgba(220, 229, 223, 0.7);
+  font-size: clamp(0.84rem, 0.94vw, 0.96rem);
+  line-height: 1.68;
+}
+
+.specimen__readout {
+  max-width: 31rem;
+  margin-top: clamp(22px, 3vh, 32px);
+  padding-top: 13px;
+  border-top-color: rgba(220, 229, 223, 0.13);
+}
+
+.specimen__readout dt {
+  color: rgba(220, 229, 223, 0.42);
+}
+
+.scroll-cue {
+  margin-top: clamp(22px, 3vh, 32px);
+  color: rgba(220, 229, 223, 0.46);
+}
+
+.laboratory {
+  background: linear-gradient(
+    90deg,
+    rgba(2, 9, 12, 0.96) 0%,
+    rgba(2, 9, 12, 0.68) 50%,
+    rgba(2, 9, 12, 0.34) 100%
+  );
+}
+
+.laboratory::before {
+  color: rgba(220, 229, 223, 0.025);
+}
+
+.laboratory__console {
+  border-color: rgba(220, 229, 223, 0.18);
+  background: rgba(2, 9, 12, 0.54);
+  backdrop-filter: blur(20px);
+}
+
+.capture-button {
+  background: rgba(220, 229, 223, 0.025);
+}
+
+.colophon {
+  background: rgba(2, 9, 12, 0.94);
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .specimen__copy {
+    grid-column: 1 / span 6;
+  }
+
+  .specimen--reverse .specimen__copy {
+    grid-column: 7 / span 6;
+  }
+}
+
+@media (max-width: 767px) {
+  .museum-header {
+    min-height: 84px;
+    padding: max(14px, env(safe-area-inset-top)) 14px 12px;
+  }
+
+  .instrument-button {
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  .specimen {
+    min-height: 100svh;
+    padding:
+      calc(var(--header-h) + 52px)
+      22px
+      max(72px, calc(62px + env(safe-area-inset-bottom)));
+  }
+
+  .specimen::after,
+  .specimen--reverse::after {
+    background: linear-gradient(
+      0deg,
+      rgba(2, 9, 12, 0.96) 0%,
+      rgba(2, 9, 12, 0.78) 35%,
+      rgba(2, 9, 12, 0.18) 67%,
+      rgba(2, 9, 12, 0) 82%
+    );
+  }
+
+  .specimen__copy,
+  .specimen--reverse .specimen__copy {
+    width: 100%;
+    max-width: 33rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    backdrop-filter: none;
+  }
+
+  .specimen__catalogue {
+    margin-bottom: 22px;
+  }
+
+  .specimen__title,
+  .specimen--opening .specimen__title {
+    font-size: clamp(3.8rem, 20vw, 5.7rem);
+  }
+
+  html[lang="zh-TW"] .specimen__title {
+    font-size: clamp(3.6rem, 18vw, 5.1rem);
+  }
+
+  .specimen__description {
+    max-width: 31em;
+    margin-top: 20px;
+    color: rgba(220, 229, 223, 0.74);
+  }
+
+  .laboratory {
+    background: rgba(2, 9, 12, 0.9);
+  }
+
+  .exhibit-progress {
+    background: rgba(2, 9, 12, 0.7);
+  }
+}
