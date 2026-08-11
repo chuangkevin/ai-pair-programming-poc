@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "project": "THE WEATHER THAT NEVER WAS",
+  "recorded_date": "2026-08-11",
+  "ollama_base_url": "http://10.11.1.67:11434",
+  "cloud_subagents_used": 0,
+  "coordinator": "Codex",
+  "models": [
+    "qwen3.6:35b-a3b-coding-nvfp4",
+    "qwen3-vl:30b-a3b-instruct",
+    "qwen3-vl:tw"
+  ],
+  "runs": [
+    {
+      "id": "D01",
+      "wave": "design",
+      "role": "art_direction",
+      "model": "qwen3-vl:30b-a3b-instruct",
+      "response_bytes": 9265,
+      "outcome": "partial_accept",
+      "accepted": ["persistent_weather_condenser", "museum_catalogue_language"],
+      "rejected": ["external_paid_fonts", "mobile_content_removal", "blue_only_palette"]
+    },
+    {
+      "id": "D02",
+      "wave": "design",
+      "role": "shader_architecture",
+      "model": "qwen3.6:35b-a3b-coding-nvfp4",
+      "response_bytes": 9141,
+      "outcome": "accept_design_only",
+      "accepted": ["single_shader_field", "dpr_cap", "mobile_budget", "reduced_motion", "webgl_fallback"]
+    },
+    {
+      "id": "D03",
+      "wave": "design",
+      "role": "interaction_architecture",
+      "model": "qwen3.6:35b-a3b-coding-nvfp4",
+      "response_bytes": 10386,
+      "outcome": "partial_accept",
+      "accepted": ["native_scroll", "intersection_observer", "sound_opt_in", "png_capture"],
+      "rejected": ["role_application", "custom_gestures", "3d_only_controls"]
+    },
+    {
+      "id": "D04",
+      "wave": "design",
+      "role": "bilingual_editor",
+      "model": "qwen3-vl:tw",
+      "response_bytes": 3309,
+      "outcome": "accept_direction_rewrite_copy"
+    },
+    {
+      "id": "C01",
+      "wave": "implementation",
+      "role": "weather_engine",
+      "model": "qwen3.6:35b-a3b-coding-nvfp4",
+      "response_bytes": 15643,
+      "outcome": "reject",
+      "format_compliant": false,
+      "defects": ["invalid_glsl_vec4_to_vec3", "time_not_applied", "density_collapses_coordinates", "spectrum_unused", "mode_delay", "raf_duplication"]
+    },
+    {
+      "id": "C02",
+      "wave": "implementation",
+      "role": "experience_layer",
+      "model": "qwen3.6:35b-a3b-coding-nvfp4",
+      "response_bytes": 21868,
+      "outcome": "reject_except_semantic_fragments",
+      "format_compliant": false,
+      "defects": ["wrong_html_entry", "listener_cleanup_noop", "null_safety", "bilingual_state_overlap", "generic_card_visuals"]
+    },
+    {
+      "id": "C03",
+      "wave": "implementation",
+      "role": "integration",
+      "model": "qwen3.6:35b-a3b-coding-nvfp4",
+      "response_bytes": 1728,
+      "outcome": "reject_and_retry",
+      "format_compliant": false,
+      "defects": ["invalid_file_directive", "main_js_missing"]
+    },
+    {
+      "id": "C04",
+      "wave": "implementation",
+      "role": "integration_retry",
+      "model": "qwen3.6:35b-a3b-coding-nvfp4",
+      "response_bytes": 2746,
+      "outcome": "patch_accept_end_to_end_fail",
+      "format_compliant": true,
+      "defects": ["did_not_detect_wrong_html_entry", "build_success_bundle_only_0_71_kb"]
+    },
+    {
+      "id": "R01",
+      "wave": "repair",
+      "role": "rendering_audio_repair",
+      "model": "qwen3.6:35b-a3b-coding-nvfp4",
+      "response_bytes": 17883,
+      "outcome": "reject",
+      "format_compliant": false,
+      "defects": ["missing_patch_boundaries", "markdown_fence", "claimed_glsl_fix_not_applied", "core_defects_retained", "sound_requirement_unmet"]
+    },
+    {
+      "id": "R02",
+      "wave": "repair",
+      "role": "ux_rwd_repair",
+      "model": "qwen3.6:35b-a3b-coding-nvfp4",
+      "response_bytes": 25673,
+      "outcome": "reject_except_semantic_fragments",
+      "format_compliant": false,
+      "defects": ["module_global_state", "incomplete_cleanup", "pointer_range_mismatch", "fallback_blocks_content", "bilingual_state_overlap", "art_direction_unmet"]
+    },
+    {
+      "id": "V01",
+      "wave": "visual_qa",
+      "role": "desktop_lab_review",
+      "model": "qwen3-vl:30b-a3b-instruct",
+      "response_bytes": 2570,
+      "model_score": 6.8,
+      "model_verdict": "REVISE",
+      "outcome": "partial_accept",
+      "accepted": ["increase_microcopy_legibility", "strengthen_capture_affordance"],
+      "rejected_as_unverifiable_or_incorrect": ["no_focus_indicator_from_static_screenshot", "title_contrast_failure"]
+    },
+    {
+      "id": "V02",
+      "wave": "visual_qa",
+      "role": "mobile_traditional_chinese_review",
+      "model": "qwen3-vl:tw",
+      "response_bytes": 1258,
+      "model_score": 7,
+      "model_verdict": "REVISE",
+      "outcome": "partial_accept",
+      "accepted": ["touch_targets_48px", "increase_chinese_wordmark_and_data_size"],
+      "rejected_as_incorrect": ["catalogue_overlaps_title", "english_title_is_sans_serif", "infer_chinese_title_from_english_screenshot"]
+    }
+  ],
+  "deterministic_evidence": {
+    "production_build": "pass",
+    "npm_audit_vulnerabilities": 0,
+    "browser_viewports": ["1440x900", "820x1180", "390x844"],
+    "page_errors": 0,
+    "horizontal_overflow": 0,
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "png_signature": "89504e470d0a1a0a",
+    "no_webgl_fallback": "pass",
+    "reduced_motion": "pass",
+    "keyboard_focus": "pass"
+  }
+}

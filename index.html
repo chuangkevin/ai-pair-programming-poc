@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#071f26">
+    <meta name="description" content="An interactive museum of impossible atmospheric specimens, rendered in real time with Three.js.">
+    <meta name="color-scheme" content="dark">
+    <title>The Weather That Never Was — 不存在的天氣博物館</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  </head>
+  <body data-mode="0">
+    <a class="skip-link" href="#exhibition">Skip to the exhibition</a>
+
+    <div id="loader" class="loader" role="status" aria-live="polite">
+      <span class="loader__orbit" aria-hidden="true"></span>
+      <span class="loader__code">ARCHIVE / ATM–00</span>
+      <span class="loader__label">
+        <span class="copy copy--en">Calibrating an impossible sky</span>
+        <span class="copy copy--zh" lang="zh-Hant">校準一片不可能的天空</span>
+      </span>
+    </div>
+
+    <canvas id="weather-canvas" aria-hidden="true"></canvas>
+    <div id="webgl-fallback" class="fallback" aria-live="polite">
+      <span class="fallback__disc" aria-hidden="true"></span>
+      <div class="fallback__message">
+        <span class="utility">STATIC ARCHIVE MODE</span>
+        <p class="copy copy--en">The live atmosphere is unavailable. The complete exhibition remains open below.</p>
+        <p class="copy copy--zh" lang="zh-Hant">即時大氣暫時無法顯示，完整展覽內容仍可繼續瀏覽。</p>
+      </div>
+    </div>
+
+    <div class="surface-grain" aria-hidden="true"></div>
+    <div class="museum-frame" aria-hidden="true"></div>
+
+    <header class="museum-header">
+      <a class="wordmark" href="#specimen-01" aria-label="The Weather That Never Was — exhibition start">
+        <span class="wordmark__line">THE WEATHER</span>
+        <span class="wordmark__line wordmark__line--indent">THAT NEVER WAS</span>
+        <span class="wordmark__zh" lang="zh-Hant">不存在的天氣博物館</span>
+      </a>
+
+      <div class="museum-header__meta" aria-hidden="true">
+        <span>ATMOSPHERIC ARCHIVE</span>
+        <span>25.0330° N / 121.5654° E</span>
+      </div>
+
+      <div class="header-actions" aria-label="Exhibition controls">
+        <button id="lang-toggle" class="instrument-button" type="button" aria-pressed="false" aria-label="切換為繁體中文">
+          <span class="instrument-button__index">A</span>
+          <span class="copy copy--en">中文</span>
+          <span class="copy copy--zh" lang="zh-Hant">EN</span>
+        </button>
+        <button id="sound-toggle" class="instrument-button" type="button" aria-pressed="false" aria-label="Turn atmospheric sound on">
+          <span class="instrument-button__index">B</span>
+          <span class="copy copy--en">SOUND</span>
+          <span class="copy copy--zh" lang="zh-Hant">聲音</span>
+          <span class="sound-state" aria-hidden="true">00</span>
+        </button>
+      </div>
+    </header>
+
+    <nav class="exhibit-progress" aria-label="Exhibition progress">
+      <span class="exhibit-progress__caption">ARCHIVE DEPTH</span>
+      <span id="progress-label" class="progress-label">000%</span>
+      <span class="progress-rail" aria-hidden="true">
+        <span id="progress-bar" class="progress-fill"></span>
+      </span>
+    </nav>
+
+    <main id="exhibition" class="scroll-container" tabindex="-1">
+      <section id="specimen-01" class="specimen specimen--opening is-active" data-mode="0" aria-labelledby="title-01">
+        <article class="specimen__copy">
+          <div class="specimen__catalogue">
+            <span>SPECIMEN</span>
+            <span class="specimen__number">01 / 04</span>
+            <span>STATE: FRAGILE</span>
+          </div>
+          <p class="specimen__kicker">
+            <span class="copy copy--en">A museum for atmospheric events that history forgot to record.</span>
+            <span class="copy copy--zh" lang="zh-Hant">一座收藏史上未曾記錄之大氣事件的博物館。</span>
+          </p>
+          <h1 id="title-01" class="specimen__title">
+            <span class="copy copy--en">Glass<br>Rain</span>
+            <span class="copy copy--zh" lang="zh-Hant">玻璃雨</span>
+          </h1>
+          <p class="specimen__description">
+            <span class="copy copy--en">Crystalline precipitation hangs for one breath, then falls upward through a pressureless sky. Every shard remembers a cloud that never formed.</span>
+            <span class="copy copy--zh" lang="zh-Hant">結晶降水先懸停一息，再朝無壓的天空墜落。每塊碎片，都記得一朵從未成形的雲。</span>
+          </p>
+          <dl class="specimen__readout">
+            <div><dt>REFRACTION</dt><dd>1.482 n</dd></div>
+            <div><dt>FALL VECTOR</dt><dd>−9.7 m/s²</dd></div>
+            <div><dt>RECORDED</dt><dd>NEVER</dd></div>
+          </dl>
+          <p class="scroll-cue">
+            <span class="scroll-cue__line" aria-hidden="true"></span>
+            <span class="copy copy--en">Scroll to enter the archive</span>
+            <span class="copy copy--zh" lang="zh-Hant">向下捲動，進入檔案庫</span>
+          </p>
+        </article>
+      </section>
+
+      <section id="specimen-02" class="specimen specimen--reverse" data-mode="1" aria-labelledby="title-02">
+        <article class="specimen__copy">
+          <div class="specimen__catalogue">
+            <span>SPECIMEN</span>
+            <span class="specimen__number">02 / 04</span>
+            <span>STATE: POLAR</span>
+          </div>
+          <p class="specimen__kicker">
+            <span class="copy copy--en">Particles obey a field no instrument can locate.</span>
+            <span class="copy copy--zh" lang="zh-Hant">粒子服從一個沒有儀器能定位的場。</span>
+          </p>
+          <h2 id="title-02" class="specimen__title">
+            <span class="copy copy--en">Magnetic<br>Fog</span>
+            <span class="copy copy--zh" lang="zh-Hant">磁霧</span>
+          </h2>
+          <p class="specimen__description">
+            <span class="copy copy--en">A charged mist combs itself into invisible meridians. Stand still and it maps the architecture of your attention.</span>
+            <span class="copy copy--zh" lang="zh-Hant">帶電的霧將自己梳理成看不見的子午線。只要靜止，它便描出你注意力的結構。</span>
+          </p>
+          <dl class="specimen__readout">
+            <div><dt>FLUX</dt><dd>7.3 T</dd></div>
+            <div><dt>VISIBILITY</dt><dd>0.04 km</dd></div>
+            <div><dt>POLARITY</dt><dd>UNRESOLVED</dd></div>
+          </dl>
+        </article>
+      </section>
+
+      <section id="specimen-03" class="specimen" data-mode="2" aria-labelledby="title-03">
+        <article class="specimen__copy">
+          <div class="specimen__catalogue">
+            <span>SPECIMEN</span>
+            <span class="specimen__number">03 / 04</span>
+            <span>STATE: ASCENDING</span>
+          </div>
+          <p class="specimen__kicker">
+            <span class="copy copy--en">The ground returns every borrowed volt to the night.</span>
+            <span class="copy copy--zh" lang="zh-Hant">大地將借來的每一伏特，全數歸還給夜空。</span>
+          </p>
+          <h2 id="title-03" class="specimen__title">
+            <span class="copy copy--en">Reverse<br>Lightning</span>
+            <span class="copy copy--zh" lang="zh-Hant">逆閃電</span>
+          </h2>
+          <p class="specimen__description">
+            <span class="copy copy--en">Discharge begins beneath the observer and branches toward the storm. Thunder arrives first; light follows as an afterthought.</span>
+            <span class="copy copy--zh" lang="zh-Hant">放電從觀者腳下開始，向暴風分岔。雷聲先抵達，光只是遲來的念頭。</span>
+          </p>
+          <dl class="specimen__readout">
+            <div><dt>POTENTIAL</dt><dd>+840 MV</dd></div>
+            <div><dt>DIRECTION</dt><dd>ZENITH</dd></div>
+            <div><dt>DELAY</dt><dd>−2.1 s</dd></div>
+          </dl>
+        </article>
+      </section>
+
+      <section id="specimen-04" class="specimen specimen--reverse" data-mode="3" aria-labelledby="title-04">
+        <article class="specimen__copy">
+          <div class="specimen__catalogue">
+            <span>SPECIMEN</span>
+            <span class="specimen__number">04 / 04</span>
+            <span>STATE: LITTORAL</span>
+          </div>
+          <p class="specimen__kicker">
+            <span class="copy copy--en">Gravity teaches light to move like water.</span>
+            <span class="copy copy--zh" lang="zh-Hant">重力教會光，如何像水一樣移動。</span>
+          </p>
+          <h2 id="title-04" class="specimen__title">
+            <span class="copy copy--en">Tidal<br>Aurora</span>
+            <span class="copy copy--zh" lang="zh-Hant">潮汐極光</span>
+          </h2>
+          <p class="specimen__description">
+            <span class="copy copy--en">Luminous currents rise and recede across the upper atmosphere. Their shoreline passes through constellations without disturbing a star.</span>
+            <span class="copy copy--zh" lang="zh-Hant">發光的洋流在高層大氣漲退；它的岸線穿過星座，卻不驚動任何一顆星。</span>
+          </p>
+          <dl class="specimen__readout">
+            <div><dt>PERIOD</dt><dd>13.6 min</dd></div>
+            <div><dt>ALTITUDE</dt><dd>110 km</dd></div>
+            <div><dt>LUMINANCE</dt><dd>4.2 kcd</dd></div>
+          </dl>
+        </article>
+      </section>
+
+      <section id="laboratory" class="laboratory" aria-labelledby="lab-title">
+        <div class="laboratory__heading">
+          <span class="utility">OPEN RESEARCH TERMINAL / 05</span>
+          <h2 id="lab-title">
+            <span class="copy copy--en">Compose an<br>impossible sky.</span>
+            <span class="copy copy--zh" lang="zh-Hant">組成一片<br>不可能的天空。</span>
+          </h2>
+          <p>
+            <span class="copy copy--en">The archive is no longer read-only. Adjust its matter, motion and wavelength, then preserve the resulting specimen.</span>
+            <span class="copy copy--zh" lang="zh-Hant">檔案庫不再唯讀。調整它的物質、運動與波長，再保存生成的標本。</span>
+          </p>
+        </div>
+
+        <div class="laboratory__console">
+          <div class="parameter">
+            <div class="parameter__label">
+              <label for="density">
+                <span class="copy copy--en">Particle density</span>
+                <span class="copy copy--zh" lang="zh-Hant">粒子密度</span>
+              </label>
+              <output id="density-output" for="density">56</output>
+            </div>
+            <input id="density" type="range" min="0" max="100" value="56">
+          </div>
+          <div class="parameter">
+            <div class="parameter__label">
+              <label for="turbulence">
+                <span class="copy copy--en">Field turbulence</span>
+                <span class="copy copy--zh" lang="zh-Hant">場域湍流</span>
+              </label>
+              <output id="turbulence-output" for="turbulence">48</output>
+            </div>
+            <input id="turbulence" type="range" min="0" max="100" value="48">
+          </div>
+          <div class="parameter">
+            <div class="parameter__label">
+              <label for="spectrum">
+                <span class="copy copy--en">Spectral drift</span>
+                <span class="copy copy--zh" lang="zh-Hant">光譜偏移</span>
+              </label>
+              <output id="spectrum-output" for="spectrum">52</output>
+            </div>
+            <input id="spectrum" type="range" min="0" max="100" value="52">
+          </div>
+          <div class="capture-row">
+            <button id="capture-btn" class="capture-button" type="button">
+              <span class="capture-button__mark" aria-hidden="true">↘</span>
+              <span>
+                <span class="copy copy--en">Preserve specimen</span>
+                <span class="copy copy--zh" lang="zh-Hant">保存標本</span>
+              </span>
+              <small>PNG / 1:1</small>
+            </button>
+            <p id="capture-status" class="capture-status" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="colophon">
+        <p class="colophon__title">THE WEATHER THAT NEVER WAS</p>
+        <p>
+          <span class="copy copy--en">A speculative atmospheric archive. Every phenomenon is fictional; every frame is rendered live.</span>
+          <span class="copy copy--zh" lang="zh-Hant">一座推想式大氣檔案庫。所有現象皆屬虛構，每一幀皆為即時運算。</span>
+        </p>
+        <div class="colophon__codes">
+          <span>THREE.JS / WEBGL</span>
+          <span>ARCHIVE EDITION 2026</span>
+          <span>TAIPEI / TAIWAN</span>
+        </div>
+      </footer>
+    </main>
+
+    <noscript>
+      <div class="noscript">
+        This live atmospheric archive requires JavaScript. Please enable it to enter the exhibition.
+      </div>
+    </noscript>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

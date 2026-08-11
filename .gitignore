@@ -1,0 +1,14 @@
+node_modules/
+dist/
+screenshots/*
+!screenshots/desktop.png
+!screenshots/tablet.png
+!screenshots/mobile.png
+!screenshots/mobile-zh.png
+!screenshots/desktop-laboratory.png
+!screenshots/browser-results.json
+!screenshots/edge-results.json
+.vite/
+.DS_Store
+*.log
+local-logs/

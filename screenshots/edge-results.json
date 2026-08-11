@@ -1,0 +1,35 @@
+{
+  "fallback": {
+    "noWebgl": true,
+    "fallbackDisplay": "block",
+    "fallbackPointerEvents": "none",
+    "specimenVisible": true,
+    "languageToggleWorks": true,
+    "documentWidth": 390,
+    "viewportWidth": 390,
+    "errors": []
+  },
+  "reducedMotion": {
+    "stableWhileIdle": true,
+    "updatesOnModeChange": true,
+    "modeAfterScroll": "3",
+    "errors": []
+  },
+  "keyboard": {
+    "firstFocus": {
+      "className": "skip-link",
+      "outlineWidth": "2px",
+      "outlineStyle": "solid",
+      "translatedIntoView": true
+    }
+  },
+  "mobileChinese": {
+    "lang": "zh-TW",
+    "zhVisible": true,
+    "enHidden": true,
+    "documentWidth": 390,
+    "viewportWidth": 390,
+    "languageButton": 48,
+    "soundButton": 48
+  }
+}
